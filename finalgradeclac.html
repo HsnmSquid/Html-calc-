@@ -104,15 +104,14 @@
         display.innerHTML =
           "Your Final Grade Is: " + total.toFixed(2) / 10 + "/100";
 
+        var text = "<br>Good Job!";
+        var result = text.link("https://www.umassd.edu/dss/resources/students/classroom-strategies/how-to-get-good-grades/");
+
         if (total >= 90.0) {
           display.innerHTML =
-            "Your Final Grade Is: " +
-            total.toFixed(2) / 10 +
-            "/100" +
-            "<br>Good Job";
+            "Your Final Grade Is: " + total.toFixed(2) / 10 + "/100" + result;
         }
       }
     </script>
   </body>
 </html>
-
