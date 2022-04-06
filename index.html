@@ -1,32 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Student Grade Calculator</title>
+    <title>Final Grade Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript">
+      alert(
+        "Welcome to the Final Grade Calculator!\nEnter your grades and their weightings to calculate your final grade\nor just play around with the values!"
+      );
+    </script>
   </head>
   <body>
+    <header>
+      <nav>
+        <div class="navbar">
+          <ul>
+            <li><a href="finalgradecalc.html">Final Grade Calculator <a</a></li>
+            <li><a href="numpadcalc.html">Numberpad Calculator</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
     <div class="container">
       <div class="card">
         <div class="card-left-side">
           <h2>
-            Student <br />
+            Final <br />
             Grade<br />
             Calculator
           </h2>
         </div>
         <div class="card-right-side">
-          <input type="text" placeholder="Web Development" id="web" />
-          <input type="text" placeholder="Physics" id="phy" />
-          <input type="text" placeholder="Chemistry" id="chem" />
-          <input type="text" placeholder="Maths" id="maths" />
-          <button class="btn" id="btn">Calculate Percentage</button>
+          <div class="inputpair">
+            <input
+              type="number"
+              placeholder="Quarter 1 Grade"
+              class="quarter"
+              id="quarter1"
+              max="100"
+            />
+            <input
+              type="number"
+              placeholder="Weight in %"
+              id="weight1"
+              max="100"
+            />
+          </div>
+          <div class="inputpair">
+            <input
+              type="number"
+              placeholder="Quarter 2 Grade"
+              class="quarter"
+              id="quarter2"
+              max="100"
+            />
+            <input
+              type="number"
+              placeholder="Weight in %"
+              id="weight2"
+              max="100"
+            />
+          </div>
+          <div class="inputpair">
+            <input
+              type="number"
+              placeholder="Final Exam"
+              class="quarter"
+              id="finalexam"
+              max="100"
+            />
+            <input
+              type="number"
+              placeholder="Weight in %"
+              id="weight3"
+              max="100"
+            />
+          </div>
+          <button class="btn" id="btn" onclick="calculator()">
+            Calculate Your Grade
+          </button>
         </div>
       </div>
-      <div><p id="showResult">Show Result</p></div>
+      <div id="outputDiv" style="height: 50px; width: 100%"></div>
+      <div><p id="showResult">*Grade weightings must add to 100*</p></div>
     </div>
-    <script src="app.js"></script>
+    <script type="text/javascript">
+      function calculator() {
+        var grade1 = parseFloat(
+          document.getElementById("quarter1").value *
+            (document.getElementById("weight1").value / 10)
+        );
+        var grade2 = parseFloat(
+          document.getElementById("quarter2").value *
+            (document.getElementById("weight2").value / 10)
+        );
+        var grade3 = parseFloat(
+          document.getElementById("finalexam").value *
+            (document.getElementById("weight3").value / 10)
+        );
+        var total = grade1 + grade2 + grade3;
+
+        var display = document.getElementById("outputDiv");
+
+        display.innerHTML =
+          "Your Final Grade Is: " + total.toFixed(2) / 10 + "/100";
+
+        if (total >= 90.0) {
+          display.innerHTML =
+            "Your Final Grade Is: " +
+            total.toFixed(2) / 10 +
+            "/100" +
+            "<br>Good Job";
+        }
+      }
+    </script>
   </body>
 </html>
+
